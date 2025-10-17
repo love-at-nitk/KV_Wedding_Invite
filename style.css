@@ -1,0 +1,333 @@
+/* <===================TYPOGRAPHY & FONTS===================> */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Quicksand&display=swap');
+
+/* <===================CSS VARIABLES===================> */
+:root{
+    --h1-size: 7rem;
+    --h2-size: 2.1rem;
+    --h3-size: 1.7rem;
+    --text-size: 1.3rem;
+    --horizontal-margin-spacing:6rem;
+    --grey-color-light: rgba(232,230,230,.6);
+    --grey-color: rgba(232,230,230,1);
+
+    /* accents */
+    --accent: #212121;
+    --accent-soft: rgba(33,33,33,.06);
+    --accent-border: rgba(33,33,33,.25);
+}
+
+/* <===================UNIVERSAL CSS===================> */
+*{
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Cinzel', serif;
+    color: #212121;
+}
+html{ scroll-behavior: smooth; }
+.hz-margin{ padding: 0 var(--horizontal-margin-spacing); }
+h1{
+    font-size: var(--h1-size);
+    font-weight: 500;
+    line-height: var(--h1-size);
+}
+h2{ font-size: var(--h2-size); font-weight: bold; }
+h3{ font-size: var(--h3-size); font-weight: 600; letter-spacing: .5px; }
+.reveal{
+    position: relative;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: 1s all ease;
+}
+.reveal.active{ transform: translateY(0); opacity: 1; }
+.text{
+    font-family: 'Quicksand', sans-serif;
+    font-size: var(--text-size);
+    line-height: 1.3rem;
+}
+.huge-btn{
+    display: block;
+    font-size: 1rem;
+    background: transparent;
+    border: 1px solid #212121;
+    padding: 25px 50px;
+    border-radius: 50px;
+    width: fit-content;
+    margin: 30px 0;
+}
+.huge-btn:hover{ color: grey; border-color: grey; }
+
+/* center align ONLY the bottom RSVP in parting-message */
+.parting-message .huge-btn{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* subtitle under Hope to See You */
+.parting-message .subtitle{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: rgba(0,0,0,0.75);
+    text-align: center;
+    margin-top: 8px;
+}
+
+.v-reposition-container{ position: relative; left: 0; width: 100vw;   }
+.h-reposition-container{ width: 100vw;position: static; top: 0;  }
+
+/* <===================NAVBAR===================> */
+nav{ height: 3vh; width: 100%; margin-bottom: 20vh; }
+label.logo{ font-size: 35px; line-height: 80px; padding: 0 0 0 30px; font-weight: bold; }
+nav ul{ float: right; margin-right: 20px; list-style: none; }
+nav ul li{ display: inline-block; line-height: 80px; margin: 0 5px; }
+nav ul li a{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 17px; padding: 7px 13px; border-radius: 3px;
+    text-transform: uppercase; text-decoration: none;
+}
+a:hover{ color: orange; transition: .5s; }
+.checkbtn{ font-size: 30px; float: right; line-height: 80px; margin-right: 40px; cursor: pointer; display: none; }
+#check{ display: none; }
+
+@media (max-width:1000px){
+    label.logo{ font-size: 20px; }
+    nav ul li a{ font-size: 10px; }
+    html{ font-size: 10px; }
+}
+@media (max-width:570px){
+    .checkbtn{ display: block; }
+    ul{
+        position: fixed; width: 100%; height: 100vh; backdrop-filter: blur(5px);
+        top: 80px; font-weight: bold; left: -100%; text-align: center; transition: all .5s;
+    }
+    nav ul li{ display: block; margin: 50px 0; line-height: 30px; }
+    nav li ul a{ font-size: 20px; }
+    a:hover, a.active{ background: none; color: grey; }
+    #check:checked ~ ul{ left: 0; }
+}
+
+/* <===================HOME===================> */
+.container-out{
+    margin-top: 10vh; display: flex; flex-direction: row; justify-content: space-between;
+}
+.home-img{ background-image: url(banner_image.JPG); background-size: cover; background-position: center; }
+.home-img-sm{ display: none; width: 100%; margin: 20px 0 0 0; height: 50vh; }
+#home-img-lg{ display: block; height: 110vh; width: 50vw; background-position-x: -100px; }
+@media (max-width:1000px){
+    .container-out{ flex-direction: column; }
+    .home-img-sm{ display: block; }
+    #home-img-lg{ display: none; }
+}
+
+/* <===================TIMELINE===================> */
+.timeline{
+    display: block; background-color: var(--grey-color-light); float: left; position: relative; z-index:2;
+    top: -30vh; width: 100%; backdrop-filter: blur(4px); padding: 8vh var(--horizontal-margin-spacing);
+}
+.timeline-container{ display: flex; flex-direction: row; margin: 8vh 0; }
+.timeline-img{
+    background-image: url(Ring.JPG); height: 70vh; width: 30vw; background-position: center; background-size: cover;
+}
+.timings{ margin: 30px; }
+
+/* Emphasis on event titles */
+.event{ margin-bottom: 2rem; }
+.event h3{
+    display: flex; align-items: baseline; gap: .6rem;
+    font-weight: 700;
+}
+.event .event-index{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600; opacity: .6; font-size: calc(var(--h3-size) - .2rem);
+}
+.event .event-title{
+    padding-bottom: .2rem; border-bottom: 2px solid var(--accent-border);
+}
+.timeline-container .text{ padding: 1rem 0 0.7rem 4rem; }
+
+/* Stylish Google Maps link */
+.map-link{
+    display: inline-flex; align-items: center; gap: .6rem;
+    padding: 10px 16px; border-radius: 999px;
+    background: var(--accent-soft); border: 1px solid var(--accent-border);
+    font-family: 'Quicksand', sans-serif; font-size: 0.95rem; text-decoration: none;
+    transition: transform .15s ease, background .2s ease, border-color .2s ease;
+    margin-left: 4rem; /* aligns with .text left padding */
+}
+.map-link i{ font-size: 1rem; }
+.map-link:hover{ transform: translateY(-1px); background: rgba(33,33,33,.09); border-color: rgba(33,33,33,.35); }
+
+@media (max-width:1000px){
+    .timeline{
+        background-color: var(--grey-color);
+        float: none; position: relative; top: 0; width: 100%;
+        backdrop-filter: blur(0); height: fit-content;
+    }
+    .timeline-container{ flex-direction: column; }
+    .timeline-img{ height: 50vh; width: 100%; }
+    .timeline-container .text{ padding: .8rem 0 .6rem 0; }
+    .map-link{ margin-left: 0; }
+}
+
+
+
+/* <===================STORY===================> */
+#story{ padding-top: 10vh; display: flex; flex-direction: row; margin: 10vh 0; }
+#story h3{ width: 40vw; }
+#story p{ width: 40vw; text-align: justify; font-size: var(--h3-size); line-height: var(--h3-size); }
+@media (max-width:1000px){
+    .h-reposition-container{ position: relative; top: 0; }
+    #story{ flex-direction: column; }
+    #story h3{ width: 100%; margin: 5px 0; font-size: var(--h3-size); }
+    #story p{ width: 100%; margin: 5px 0; font-size: var(--text-size); line-height: var(--text-size); }
+}
+
+/* <===================GALLERY===================> */
+.gallery{
+    display: flex; padding: 20vh 0; justify-content: center; align-items: center;
+    gap: 10px; position: relative;
+}
+.gallery-img{
+    width: 30vw; height: 30vw; margin: 10px; background-size: cover; background-position: center;
+}
+.gallery-img:nth-child(1){ background-image: url(CS1.JPG); background-position-x: right; }
+.gallery-img:nth-child(3){ background-image: url(CS3.JPG); }
+.gallery-img:nth-child(2){ background-position-y: top; background-image: url(CS2.JPG); }
+
+/* Mobile & tablet: clickable carousel (one at a time) */
+@media (max-width:1000px){
+    .gallery{
+        padding: 6vh 0;
+        height: 85vw; /* viewport for single image */
+        justify-content: center;
+    }
+    .gallery.is-carousel .gallery-img{
+        position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+        width: 85vw; height: 85vw;
+        margin: 0;
+        border-radius: 12px;
+        opacity: 0; transition: opacity .25s ease-in-out;
+    }
+    .gallery.is-carousel .gallery-img.active{ opacity: 1; }
+
+    .carousel-btn, .carousel-dots{ display: none; }
+    .gallery.is-carousel .carousel-btn{
+        display: inline-flex; align-items: center; justify-content: center;
+        position: absolute; top: 50%; transform: translateY(-50%);
+        width: 42px; height: 42px; border-radius: 50%;
+        border: 1px solid var(--accent-border); background: var(--accent-soft);
+        cursor: pointer; z-index: 3;
+    }
+    .gallery.is-carousel .carousel-btn.prev{ left: 10px; }
+    .gallery.is-carousel .carousel-btn.next{ right: 10px; }
+
+    .gallery.is-carousel .carousel-dots{
+        display: flex; gap: 8px; position: absolute; bottom: -22px; left: 50%;
+        transform: translateX(-50%); z-index: 3;
+    }
+    .gallery.is-carousel .carousel-dots .dot{
+        width: 8px; height: 8px; border-radius: 50%;
+        border: 1px solid var(--accent-border); background: var(--accent-soft);
+    }
+    .gallery.is-carousel .carousel-dots .dot.active{
+        background: #212121;
+    }
+}
+
+/* <===================QUOTE===================> */
+.quote{ margin: 10vh 0; }
+.quote h1{ width: 55vw; font-size: 4rem; text-align: center; margin: auto; }
+.author{ text-align: center; margin: 20px 0 10vh 0; }
+@media (max-width:1570px){
+    .quote h1{ font-size: 2rem; line-height: 2rem; }
+}
+
+/* <===================HANDS===================> */
+.hands{
+    height: 120vh; width: 100%;
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/chuck-842bb.appspot.com/o/GurAmanWed%2Fpic6.jpg?alt=media&token=febecde7-9479-4a1e-8402-28f021228422);
+    background-size: cover; background-position-y: center; background-attachment: fixed; background-repeat: no-repeat;
+}
+
+/* <===================STAY===================> */
+#stay{
+    background-color: var(--grey-color); padding: 10vh var(--horizontal-margin-spacing); width: 100%;
+}
+.stay-container{ display: flex; flex-direction: row; justify-content: space-around; margin: 20vh 0; }
+.stay-item .text{ margin: 20px 0; }
+.links{ cursor: pointer; text-decoration: underline; }
+@media (max-width:1000px){
+    .stay-container{ flex-direction: column; margin: 10px 0; }
+    .stay-item{ margin: 2vh 0; }
+}
+
+/* <===================REGISTRY===================> */
+#registry{
+    padding: 20vh var(--horizontal-margin-spacing) 0 var(--horizontal-margin-spacing);
+    display: flex; flex-direction: row; justify-content: space-between;
+}
+.registry-container{ display: block; width: 30vw; }
+.registry-container .text{ text-align: justify; margin: 20px 0; }
+.registry-img{
+    display: block; height: 100vh; width: 40vw;
+    background-image: url(https://firebasestorage.googleapis.com/v0/b/chuck-842bb.appspot.com/o/GurAmanWed%2Fpic7.jpg?alt=media&token=79b8d974-04ff-4b2d-bed5-82638399b34e);
+    background-size: cover; background-position-y: top; background-repeat: no-repeat;
+}
+.registry-img-sm{ display: none; }
+.registry-img-lg{ display: block; }
+@media (max-width:1000px){
+    #registry{ flex-direction: column; }
+    .registry-img{ width: 100%; height: 50vh; }
+    .registry-img-sm{ margin-top: 10vh; display: block; }
+    .registry-img-lg{ display: none; }
+    .registry-container{ width: 100%; }
+    #registry button{ margin-inline: auto; }
+}
+
+/* <===================PARTING MESSAGE===================> */
+.parting-message h1{ margin-top: 10vh; text-align: center; }
+/* RSVP centered done above via .parting-message .huge-btn */
+.parting-message button{ margin: 10vh auto; }
+
+/* <===================FOOTER===================> */
+footer{ margin-top: 20vh; height: fit-content; width: 100%; background-color: var(--grey-color); padding: 10vh 30px; }
+footer h2{ font-size: 2rem; font-weight: normal; }
+
+
+
+/* <===================MOBILE CENTER ALIGN===================> */
+@media (max-width:1000px) {
+    /* Center all elements inside .home */
+    .home.hz-margin {
+        text-align: center;
+    }
+    .home.hz-margin h1,
+    .home.hz-margin h3,
+    .home.hz-margin .text,
+    .home.hz-margin .huge-btn {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Center the "Celebrating Our Love" heading */
+    .timeline h2 {
+        text-align: center;
+    }
+	
+	    .timings {
+        text-align: center;
+    }
+
+    .timings .event {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .timings .text,
+    .timings .map-link {
+        margin-left: 0;
+        text-align: center;
+    }
+}
